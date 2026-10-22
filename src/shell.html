@@ -1,0 +1,72 @@
+<title>Abendtau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Courier+Prime&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/*CSS*/
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s-hi"/><stop offset="1" class="s-lo"/></linearGradient>
+    <linearGradient id="g-fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="300"><stop offset=".88" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="fade-body" maskUnits="userSpaceOnUse" x="-20" y="0" width="280" height="340"><rect x="-20" y="0" width="280" height="340" fill="url(#g-fade)"/></mask>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5"/></filter>
+    <marker id="arr" viewBox="0 0 10 10" refX="5.5" refY="5" markerWidth="4.2" markerHeight="4.2" markerUnits="strokeWidth" orient="auto"><path class="arr-head" d="M1.5,1.5 L7,5 L1.5,8.5"/></marker>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand"><span id="brand-mark" aria-hidden="true"></span>Abendtau</div>
+    <button class="icon-btn sound" data-act="sound-toggle" aria-pressed="true" aria-label="Ton ausschalten"></button>
+    <button class="icon-btn" data-act="settings-open" aria-label="Einstellungen"></button>
+  </div>
+</header>
+
+<main class="wrap" id="view"></main>
+
+<nav class="tabbar" aria-label="Bereiche">
+  <div class="tabbar-in">
+    <button class="tab" data-act="tab" data-tab="heute"><span>Heute</span></button>
+    <button class="tab" data-act="tab" data-tab="routinen"><span>Routinen</span></button>
+    <button class="tab" data-act="tab" data-tab="uebungen"><span>Übungen</span></button>
+    <button class="tab" data-act="tab" data-tab="verlauf"><span>Verlauf</span></button>
+  </div>
+</nav>
+
+<div id="player" class="player" hidden role="dialog" aria-modal="true" aria-label="Abendritual">
+  <div class="pl-top">
+    <button class="icon-btn" data-act="pl-close" aria-label="Ritual beenden"></button>
+    <div class="pl-progress" id="pl-progress"></div>
+    <button class="icon-btn sound" data-act="sound-toggle" aria-pressed="true" aria-label="Ton ausschalten"></button>
+  </div>
+  <div class="pl-stage">
+    <div class="pl-illus" id="pl-illus"></div>
+    <span class="badge pl-side" id="pl-side" hidden></span>
+    <div class="pl-prep" id="pl-prep" hidden></div>
+  </div>
+  <div class="pl-info">
+    <p class="pl-meta" id="pl-meta"></p>
+    <h2 class="pl-title" id="pl-title"></h2>
+    <p class="pl-short" id="pl-short"></p>
+    <p class="pl-cue" id="pl-cue" aria-live="polite"></p>
+    <details class="pl-more" id="pl-more"><summary>Genauer</summary><ol class="steps" id="pl-steps"></ol><div class="tipbox" id="pl-tip"></div></details>
+  </div>
+  <div class="pl-controls">
+    <button class="icon-btn" id="pl-prev" data-act="pl-prev" aria-label="Zurück zur vorigen Übung"></button>
+    <button class="pl-main" id="pl-toggle" data-act="pl-toggle" aria-label="Pausieren">
+      <svg class="ring" viewBox="0 0 112 112" aria-hidden="true"><circle class="bg" cx="56" cy="56" r="52"/><circle class="fg" id="pl-ring" cx="56" cy="56" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg>
+      <span class="inner"><span class="pl-time" id="pl-time">0:00</span><span class="pl-state" id="pl-state"></span></span>
+    </button>
+    <button class="icon-btn" id="pl-next-btn" data-act="pl-next" aria-label="Übung überspringen"></button>
+  </div>
+  <p class="pl-next" id="pl-next"></p>
+  <div class="pl-cover" id="pl-cover" hidden></div>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/*JS*/
+</script>
