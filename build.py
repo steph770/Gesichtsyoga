@@ -28,7 +28,16 @@ HEAD = f"""<!doctype html>
 <meta name="theme-color" content="#EBEFE5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0D1712" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="{ICON}">
+<link rel="manifest" href="manifest.webmanifest">
 <style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
+"""
+
+# Meldet den Service Worker an (Installation als App, Start ohne Netz). Nur auf https oder localhost.
+SW_REGISTER = """<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+}
+</script>
 """
 
 
@@ -41,7 +50,7 @@ def main():
     page = shell.replace('/*CSS*/', css).replace('/*JS*/', js)
     cut = page.index('</style>') + len('</style>')
     head, body = page[:cut], page[cut:]
-    out = HEAD + head + '\n</head>\n<body>\n' + body.strip() + '\n</body>\n</html>\n'
+    out = HEAD + head + '\n</head>\n<body>\n' + body.strip() + '\n' + SW_REGISTER + '</body>\n</html>\n'
     (ROOT / 'index.html').write_text(out, encoding='utf-8')
     print(f'index.html geschrieben ({len(out.encode("utf-8")) // 1024} KB)')
 

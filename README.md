@@ -11,7 +11,7 @@ Eine kleine Web-App für die abendliche Gesichtsyoga-Routine, auf Wunsch mit Gua
 - Eigene Routinen, eine Übungsbibliothek und ein Verlauf als Herbarium-Kalender
 - Verlauf und Routinen bleiben im Browser des jeweiligen Geräts. Ein Sicherungscode in den Einstellungen nimmt sie auf ein anderes Gerät oder in einen anderen Browser mit.
 
-Am Handy lässt sich die Seite in Chrome über „Zum Startbildschirm hinzufügen“ wie eine App ablegen.
+Am Handy lässt sie sich in Chrome über das Menü mit „App installieren“ (oder „Zum Startbildschirm hinzufügen“) installieren. Sie startet dann mit eigenem Icon im Vollbild und funktioniert nach dem ersten Öffnen auch ohne Internet.
 
 ## Aufbau
 
@@ -23,6 +23,7 @@ Am Handy lässt sich die Seite in Chrome über „Zum Startbildschirm hinzufüge
   - `audio.js`: Klangschale, Hintergrundklänge und Sprachansagen
   - `app.js`: Ansichten, Player, Verlauf und Einstellungen
   - `styles.css` und `shell.html`: Gestaltung und Grundgerüst
+- `manifest.webmanifest`, `sw.js` und die `icon-*.png` machen die Seite installierbar. Die Icons sind aus `src/icon.svg` gerendert.
 - Nach Änderungen in `src/` baut `python3 build.py` die `index.html` neu.
 
 Die App ist eine Anleitung für Entspannung und Pflege. Sie ersetzt keine ärztliche oder kosmetische Beratung.
